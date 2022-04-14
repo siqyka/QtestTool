@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = "E:\\GIT\\xmind2casewww\\upload\\"
+app.config['UPLOAD_FOLDER'] = os.getcwd()
 
 @app.route("/moco")
 def moco():
@@ -19,18 +19,18 @@ def x2c():
 
 @app.route('/uploader',methods=['GET','POST'])
 def uploader():
-    print(os.path.join(app.config['UPLOAD_FOLDER']))
+    # print(os.path.join(app.config['UPLOAD_FOLDER']))
 
     if request.method == 'POST':
         f = request.files['file']
-        print(request.files)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
+        # print(request.files)
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], "upload",secure_filename(f.filename)))
 
-        return 'file uploaded successfully'
+        return "True"
 
-    # else:
-    #     return 'file uploaded f'
-    #     # return render_template('upload.html')
+    else:
+        return 'False'
+        # return render_template('upload.html')
 
 @app.route("/index")
 def index():

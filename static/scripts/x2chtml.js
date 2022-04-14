@@ -14,7 +14,13 @@ function afterClick(){
         formData.append("file",file.files[0]);
         ajaxHttp.send(formData);
         ajaxHttp.onreadystatechange=function(){
-            alert(ajaxHttp.responseText);
+            if(ajaxHttp.responseText=="True" && ajaxHttp.readyState==4){
+                alert("文件转换成功！")
+                // location.reload();
+            };
+            if(ajaxHttp.responseText=="False" && ajaxHttp.readyState==4){
+                alert("请重新上传文件！");
+            };
         }
 
     }

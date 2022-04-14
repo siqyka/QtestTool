@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
     <title>Q测试</title>
     <link rel="icon" href="{{ url_for('static', filename='makes/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
@@ -12,6 +16,7 @@
     <!-- <link rel="stylesheet" href="static\css\style.css" type="text/css"> -->
     {% endblock %}
 </head>
+
 <body>
 
     <h2>
@@ -20,7 +25,8 @@
     </h2>
     {% block content %}{% endblock %}
     <footer>
-        <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}" title="to~to~ro~">
+        <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}"
+            title="to~to~ro~">
         <small>&copy; 2022 <a href="https://github.com/siqyka">qiyk-GitHub</a></small>
     </footer>
 </body>
