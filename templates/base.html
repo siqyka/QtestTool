@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q测试</title>
+    <link rel="icon" href="{{ url_for('static', filename='makes/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/kjstyle.css') }}" type="text/css">
+    <!-- <link rel="icon" href="static\makes\favicon.ico"> -->
+    <!-- <link rel="stylesheet" href="static\css\style.css" type="text/css"> -->
+    {% endblock %}
+</head>
+<body>
+
+    <h2>
+        <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='makes/favicon.ico') }}">
+        Q测试
+    </h2>
+    {% block content %}{% endblock %}
+    <footer>
+        <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}" title="to~to~ro~">
+        <small>&copy; 2022 <a href="https://github.com/siqyka">qiyk-GitHub</a></small>
+    </footer>
+</body>
+
+</html>
