@@ -1,4 +1,4 @@
-from sometools import clock, getConfigs
+from .sometools import clock, getConfigs
 from xmindparser import xmind_to_dict
 import collections
 import ast
@@ -34,7 +34,7 @@ def _analysisXmind(root, str_root, alist):
 
 def xmind2dict(xmind_path):
     xdict = xmind_to_dict(xmind_path)
-    print(xdict)
+    # print(xdict)
     root = xdict[0]["topic"]
     # print(root)
     path_list = []
@@ -43,7 +43,9 @@ def xmind2dict(xmind_path):
 
 
 def handle_xmind_msg(xmsgdict):
+
     conf = ast.literal_eval(getConfigs().get("xe"))
+
     confl = [x for x in collections.OrderedDict(conf).keys()]
     case_msg_list = []
     for xd in xmsgdict:

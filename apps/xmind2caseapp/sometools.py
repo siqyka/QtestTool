@@ -1,6 +1,8 @@
+import imp
 import time
 import functools
 import configparser
+import os
 
 FMT = "[{t1:0.8f}s] {name}({arg_str}) --> {res}"
 
@@ -26,7 +28,7 @@ def clock(fmt=FMT):
                 pairs = ['{}:{}'.format(k, w)
                          for k, w in sorted(kwargs.items())]
             arg_str = ",".join(arg_list)
-            print(FMT.format(**locals()))
+            # print(FMT.format(**locals()))
         return clocked
     return decorate
 
@@ -35,9 +37,12 @@ def getConfigs():
     '''
     获取configs.ini配置
     '''
+    config_path=os.path.join(os.path.dirname(__file__),"configs.ini")
+
     config = configparser.ConfigParser()
-    config.read("configs.ini", encoding="utf-8")
+    config.read(config_path, encoding="utf-8")
     configD = {}
+
     for i in config.sections():
         configD.update({k: v for k, v in config.items(i)})
     return configD

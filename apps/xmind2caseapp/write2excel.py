@@ -1,5 +1,5 @@
 import xlwt
-from sometools import clock, getConfigs
+from .sometools import clock, getConfigs
 import json
 
 
@@ -13,7 +13,7 @@ def _write_data(sheet, data, index_excel):
 
     row = 1
     for x in data:
-        print(x)
+        # print(x)
         for k, v in x.items():
             sheet.write(row, index_excel[k], v.replace(
                 "\\r\\n", "\\n").strip(), style)
