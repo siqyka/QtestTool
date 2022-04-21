@@ -31,11 +31,11 @@
     text-decoration: none
 }
 
-#fileName{
+#fileName {
 
     /* border:0; */
     background-color: rgb(255, 255, 255);
-    position: relative; 
+    position: relative;
     top: -10px;
     left: 15px;
     color: #888;
@@ -54,15 +54,19 @@
 } */
 
 #button {
-
-
-    position: absolute; 
-    top: 75px;
+    position: absolute;
     left: 500px;
-
 }
 
 .noa {
     text-decoration: none;
-    color: #000000;
+    color: #888;
+}
+
+ul {
+    top: 100px;
+}
+
+div a {
+    left: 500px;
 }

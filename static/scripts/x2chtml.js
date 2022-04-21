@@ -16,7 +16,7 @@ function afterClick() {
 
     if (file.files[0] != undefined && button.name == "zh") {
 
-        ajaxHttp.open("POST", "http://127.0.0.1:5000/uploader", true);
+        ajaxHttp.open("POST", "http://127.0.0.1:5000/x2c/uploader", true);
         // ajaxHttp.setRequestHeader()
         formData.append("file", file.files[0]);
         ajaxHttp.send(formData);

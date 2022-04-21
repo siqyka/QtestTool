@@ -1,35 +1,28 @@
-from fileinput import filename
-from operator import imod
-from flask import Flask, render_template, send_file, url_for, request
+from flask import Blueprint
+from flask import  render_template, url_for, request
 from flask import make_response, send_from_directory
 from werkzeug.utils import secure_filename
 import os
 from apps.xmind2caseapp import write2excel, xmind2case
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.getcwd()
-upload_dir = os.path.join(app.config['UPLOAD_FOLDER'], "upload")
-download_dir = os.path.join(app.config['UPLOAD_FOLDER'], "download")
+x2c = Blueprint('x2c',__name__) 
+workpath = os.getcwd()
+upload_dir = os.path.join(workpath, "upload")
+download_dir = os.path.join(workpath, "download")
 
 
-@app.route("/moco")
-def moco():
-    return "Hello moco!"
+@x2c.route("/x2c")
+def x2ch():
+    return render_template("x2c/x2c.html")
+
+@x2c.route("/x2conf")
+def x2conf():
+    return render_template("x2c/x2c.html")
 
 
-@app.route("/test")
-def test():
-    return render_template("test.html")
-
-
-@app.route("/x2c")
-def x2c():
-    return render_template("x2c.html")
-
-
-@app.route('/uploader', methods=['GET', 'POST'])
+@x2c.route('/uploader', methods=['GET', 'POST'])
 def uploader():
-    # print(os.path.join(app.config['UPLOAD_FOLDER']))
+    # print(os.path.join(workpath))
 
     if request.method == 'POST':
         f = request.files['file']
@@ -43,8 +36,8 @@ def uploader():
         h = xmind2case.handle_xmind_msg(p)
         write2excel.writr_to_excel(dopath, h)
 
-        dpath = url_for("download_file", filename=filename)
-
+        dpath = url_for("x2c.download_file", filename=filename)
+        print(dpath)
         return "True+"+dpath
 
     else:
@@ -52,9 +45,9 @@ def uploader():
         # return render_template('upload.html')
 
 
-@app.route("/download/<filename>", methods=['GET'])
+@x2c.route("/download/<filename>", methods=['GET'])
 def download_file(filename):
-    # directory=os.path.join(app.config['UPLOAD_FOLDER'],"download")
+    # directory=os.path.join(workpath,"download")
     response = make_response(send_from_directory(
         download_dir, filename, as_attachment=True))
     response.headers["Content-Disposition"] = "attachment; filename={}".format(
@@ -62,13 +55,4 @@ def download_file(filename):
     return response
 
 
-@app.route("/index")
-def index():
-    # return send_file('templates/HangzhouMetroPlanning.html')
-    return render_template("index.html")
 
-
-if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000, debug=True)
-else:
-    application = app
