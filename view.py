@@ -1,10 +1,11 @@
 # coding:utf-8 
 from flask import Flask,render_template 
 from x2c import x2c
-
+from tf import tf
 
 app=Flask(__name__) 
 app.register_blueprint(x2c,url_prefix='/x2c') 
+app.register_blueprint(tf,url_prefix='/tf') 
 
 @app.route("/index")
 def index():

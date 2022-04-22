@@ -12,6 +12,7 @@
     <link rel="icon" href="{{ url_for('static', filename='makes/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/kjstyle.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tfstyle.css') }}" type="text/css">
     <!-- <link rel="icon" href="static\makes\favicon.ico"> -->
     <!-- <link rel="stylesheet" href="static\css\style.css" type="text/css"> -->
     {% endblock %}
@@ -23,7 +24,8 @@
         <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='makes/favicon.ico') }}">
         Q测试
     </h2></a>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
     <footer>
         <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}"
             title="to~to~ro~">

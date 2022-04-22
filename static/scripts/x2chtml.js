@@ -22,7 +22,7 @@ function afterClick() {
         ajaxHttp.send(formData);
         ajaxHttp.onreadystatechange = function () {
             returnText = ajaxHttp.responseText;
-            if (returnText == "Q101" && ajaxHttp.readyState == 4) {
+            if (returnText == "X101" && ajaxHttp.readyState == 4) {
                 fileName.innerHTML=""
                 alert("请上传xmind文件！");
                 return

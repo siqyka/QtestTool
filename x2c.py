@@ -6,12 +6,12 @@ import os
 from apps.xmind2caseapp import write2excel, xmind2case
 
 x2c = Blueprint('x2c',__name__) 
-workpath = os.getcwd()
-upload_dir = os.path.join(workpath, "upload")
-download_dir = os.path.join(workpath, "download")
+# workpath = os.getcwd()
+workpath=os.path.dirname(os.path.realpath(__file__))
+upload_dir = os.path.join(workpath, "apps/xmind2caseapp" ,"upload")
+download_dir = os.path.join(workpath,"apps/xmind2caseapp" , "download")
 
-
-@x2c.route("/x2c")
+@x2c.route("/index")
 def x2ch():
     return render_template("x2c/x2c.html")
 
@@ -27,7 +27,7 @@ def uploader():
     if request.method == 'POST':
         f = request.files['file']
         if f.filename[f.filename.find("."):]!=".xmind":
-            return "Q101"
+            return "X101"  # X101:上传的不是xmind格式
         filename = f.filename[:f.filename.find(".")]+".xls"
         uppath = os.path.join(upload_dir, secure_filename(f.filename))
         dopath = os.path.join(download_dir, filename)
