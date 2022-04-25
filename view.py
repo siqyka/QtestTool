@@ -1,4 +1,5 @@
 # coding:utf-8 
+import flask
 from flask import Flask,render_template 
 from x2c import x2c
 from tf import tf

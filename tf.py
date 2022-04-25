@@ -1,4 +1,3 @@
-import imp
 from flask import Blueprint
 from flask import  render_template,request
 from flask import jsonify

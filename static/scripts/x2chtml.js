@@ -16,7 +16,7 @@ function afterClick() {
 
     if (file.files[0] != undefined && button.name == "zh") {
 
-        ajaxHttp.open("POST", "http://127.0.0.1:5000/x2c/uploader", true);
+        ajaxHttp.open("POST", "http://127.0.0.1:5000/x2c/uploader", true); //设置你真实的网站
         // ajaxHttp.setRequestHeader()
         formData.append("file", file.files[0]);
         ajaxHttp.send(formData);
@@ -45,7 +45,7 @@ function afterClick() {
     else if (file.files[0] != undefined && button.name == "xz") {
         var index = durl.lastIndexOf("/");
         var download_file_name = durl.substring(index + 1)
-        var url = "http://127.0.0.1:5000" + durl
+        var url = "http://127.0.0.1:5000" + durl  //设置你真实的网站
         ajaxHttp.open("GET", url, true);
         ajaxHttp.responseType = 'blob'; // 返回类型blob
         ajaxHttp.onload = function (e) {
